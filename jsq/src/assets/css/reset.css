@@ -1,5 +1,8 @@
 
-html {}
+html {
+	background-color: #F1F1F1;
+	font-size: 14px;
+}
 
 body,
 dl,
