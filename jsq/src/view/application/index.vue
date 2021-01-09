@@ -6,11 +6,11 @@
 			元
 		</div>
 		<div class="c_main">
+			
 			<ul class="tab">
-				<li class="active">财产案件</li>
-				<li>财产保全</li>
-				<li>支付令</li>
+				<li @click="active=index" :class="index==active?'active':''" v-for="item,index in ['财产案件','财产保全','支付令']">{{item}}</li>
 			</ul>
+
 
 			<div class="sx">
 				<div class="i">
@@ -39,7 +39,8 @@ export default {
 	data() {
 		return {
 			price: '',
-			radio:'1'
+			radio:'1',
+			active:0
 		};
 	},
 	mounted() {},

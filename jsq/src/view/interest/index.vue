@@ -64,6 +64,7 @@
 								<Radio label="银行同期贷款利率（年利率）"></Radio>
 							</RadioGroup>
 						</div>
+						<i @click="flag.lv = true" style="float: right;cursor: pointer;color: #5C97FF;margin-top: 20px;">查看利率参照表</i>
 					</li>
 					<li style="width: 100%;">
 						<span></span>
@@ -77,6 +78,46 @@
 						</div>
 					</li>
 				</ul>
+				
+				<ul class="list clearfix">
+					<li style="width: 100%;margin-bottom: 10px;">
+						<span>约定逾期利率：</span>
+						<div class="r">
+							<RadioGroup type="button">
+								<Radio label="自行填写"></Radio>
+								<Radio label="银行同期贷款利率（年利率）"></Radio>
+							</RadioGroup>
+						</div>
+					</li>
+					<li style="width: 100%;">
+						<span></span>
+						<div class="r">
+							倍数:
+							<Input  placeholder="" style="width: 100px;margin-right: 10px;" />
+							档次:
+							 <Select v-model="select"  style="width:100px">
+							   <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+							 </Select>
+						</div>
+					</li>
+				</ul>
+				<ul class="list clearfix" v-for="item in fk">
+					<li>
+						<span>收到借款金额：</span>
+						<div class="r">
+							<Input style="width: 85%;" placeholder="" />
+							<i>元</i>
+						</div>
+					</li>
+					<li>
+						<span>收到款项日期：</span>
+						<div class="r">
+							<DatePicker type="date" placeholder=""></DatePicker>
+						</div>
+						<Button v-if="item == fk" type="success" style="float: right;margin-right: 20px;" @click="fk++">新增放款</Button>
+					</li>
+				</ul>
+				
 			</div>
 			
 		</div>
@@ -84,11 +125,12 @@
 		<div class="c_main">
 			<ul class="tab">
 				<li class="active">实际还款事实</li>
+				<Button type="success" @click="hk++" style="float: right;margin-right: 20px;margin-top: 12px;">新增还款</Button>
 			</ul>
-			<div class="lists">
+			<div class="lists" v-for="item in hk">
 				
 				<ul class="list clearfix">
-					<li class="tt">第1次还款</li>
+					<li class="tt">第{{item}}次还款</li>
 					<li style="margin-bottom: 15px;">
 						<span>还款金额：</span>
 						<div class="r">
@@ -252,6 +294,40 @@
 			
 		</div>
 		
+		
+		<div class="alert" v-if="flag.lv" @click="flag.lv = false">
+			<div class="main" @click.stop>
+				<div class="title">
+					<span>利率参照表</span>
+					<Icon @click="flag.lv = false" type="md-close" />
+				</div>
+				<div class="content">
+					<div class="tables">
+						<p>贷款利率</p>
+						<ul>
+							<li class="clearfix">
+								<span>更新日期</span>
+								<span>6个月内(%)</span>
+								<span>6个月至1年(%)</span>
+								<span>1至3年(%)</span>
+								<span>3至五年(%)</span>
+								<span>5年以上(%)</span>
+							</li>
+							<li class="clearfix" v-for="item in 5">
+								<span>2018-10-24</span>
+								<span>4.35</span>
+								<span>4.35</span>
+								<span>4.35</span>
+								<span>4.35</span>
+								<span>4.35</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
 	</div>
 </template>
 
@@ -259,6 +335,11 @@
 export default {
 	data() {
 		return {
+			fk:1,
+			hk:1,
+			flag:{
+				lv:false
+			},
 			select:0,
 			cityList:[
 				{
@@ -400,5 +481,73 @@ export default {
 		}
 		
 	}
+
+	.alert{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 10000000;
+		background-color: rgba(0,0,0,0.5);
+		.main{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background-color: #fff;
+			border-radius: 10px;
+			width: 800px;
+			overflow: hidden;
+			transform: translate(-50%,-50%);
+			.title{
+				background-color: @default-color;
+				padding: 20px;
+				color: #fff;
+				span{
+					font-size: 16px;
+				}
+				i{
+					float: right;
+					font-size: 18px;
+					cursor: pointer;
+				}
+			}
+			
+			.content{
+				padding: 20px;
+			}
+			
+		}
+		
+		.tables{
+			&>p{
+				display: inline-block;
+				background-color: #E7E7E7;
+				color: @default-color;
+				padding: 5px 10px;
+			}
+			ul{
+				border: 1px solid #E7E7E7;
+				border-top: none;
+				li{
+					span{
+						float: left;
+						width: 16.66%;
+						padding:8px;
+					}
+				}
+				li:first-child{
+					span{
+						color: #2B2B2B;
+					}
+				}
+				li:nth-child(odd){
+					background-color: #E7E7E7;
+				}
+			}
+		}
+		
+	}
+	
 }
 </style>

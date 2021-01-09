@@ -90,28 +90,29 @@
 			</ul>
 			
 			<div class="lists">
-				<ul class="list clearfix" style="position: relative;padding: 40px;">
+				<ul class="list clearfix"  style="position: relative;padding: 40px;">
 					<li style="width: 100%;margin-bottom: 15px;">
-						<span><i>*</i>债务开始时间：</span>
+						<span style="width: 200px;"><i>*</i>延迟履行利息计算区间：</span>
 						<div class="r" style="width: 600px;">
 							<DatePicker type="date" placeholder="" style="margin-right: 20px;"></DatePicker>
 							<DatePicker type="date" placeholder="" style="margin-right: 20px;"></DatePicker>
-							<Button type="success" icon="ios-add-circle-outline">新增放款</Button>
+							<Button type="success" icon="ios-add-circle-outline" @click="fk++">扣除区间</Button>
+						</div>
+					</li>
+					<li style="width: 100%;margin-bottom: 15px;" v-for="item in fk">
+						<span  style="width: 200px;"><i>*</i>扣除区间{{item}}：</span>
+						<div class="r" style="width: 600px;">
+							<DatePicker type="date" placeholder="" style="margin-right: 20px;"></DatePicker>
+							<DatePicker type="date" placeholder="" style="margin-right: 20px;"></DatePicker>
 						</div>
 					</li>
 					<li style="width: 100%;margin-bottom: 15px;">
-						<span>加借债务利至：</span>
+						<span  style="width: 200px;">加借债务利率：</span>
 						<div class="r">
-							<Input style="width: 85%;" placeholder="" />
-							<i>元</i>
+							0.0185%(日利率)
 						</div>
 					</li>
-					<li style="width: 100%;margin-bottom: 15px;">
-						<span>加借债务利至：</span>
-						<div class="r">
-							
-						</div>
-					</li>
+					
 					<li class="tips">
 						<ul>
 							<li class="tips_t">
@@ -360,6 +361,7 @@
 	export default{
 		data(){
 			return{
+				fk:1,
 				flag:{
 					lv:false
 				},

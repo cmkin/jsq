@@ -16,12 +16,18 @@
 		
 		
 		<div class="lists">
+			<div class="left">
+				<Icon type="ios-arrow-back" />
+			</div>
 			<ul class="clearfix">
 				<li @click="goindex" v-for="item in lists" :style="{backgroundColor:item.color}">
 					<img :src="item.icon" :class="item.add?'add':''" alt="">
 					<span>{{item.text}}</span>
 				</li>
 			</ul>
+			<div class="right">
+				<Icon type="ios-arrow-forward" />
+			</div>
 		</div>
 		
 		<div class="listsTwo">
@@ -184,6 +190,30 @@
 		.lists{
 			width: 70%;
 			margin: auto;
+			position: relative;
+			.left,.right{
+				position: absolute;
+				left: -80px;
+				z-index: 100;
+				cursor: pointer;
+				top: 50%;
+				transform: translateY(-50%) translateX(-100%);
+				i{
+					transition: all 0.5s;
+					color: rgba(255,255,255,0.4);
+					font-size: 80px;
+				}
+				&:hover{
+					i{
+						color: #fff;
+					}
+				}
+			}
+			.right{
+				left: auto;
+				right: -80px;
+				transform: translateY(-50%) translateX(100%);
+			}
 			ul{
 				li{
 					position: relative;
@@ -203,7 +233,8 @@
 					}
 					.add{
 						position: relative;
-						top: 20px;
+						top: 25px;
+						left: -5px;
 					}
 					span{
 						display: block;
@@ -244,12 +275,12 @@
 						padding-top: 10px;
 					}
 					&:hover{
-						/* img:nth-child(1){
+						img:nth-child(1){
 							display: none;
 						}
 						img:nth-child(2){
 							display: block;
-						} */
+						} 
 					}
 				}
 			}

@@ -7,9 +7,7 @@
 		</div>
 		<div class="c_main">
 			<ul class="tab">
-				<li class="active">财产案件</li>
-				<li>离婚案件</li>
-				<li>人格权侵害赔偿</li>
+				<li @click="active=index" :class="index==active?'active':''" v-for="item,index in ['财产案件','离婚案件','人格权侵害赔偿']">{{item}}</li>
 			</ul>
 
 			<div class="sx">
@@ -54,7 +52,8 @@ export default {
 	data() {
 		return {
 			price: '',
-			radio:'1'
+			radio:'1',
+			active:0
 		};
 	},
 	mounted() {},
