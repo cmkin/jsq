@@ -305,6 +305,7 @@ export default {
 			.active {
 				color: @default-color;
 				font-weight: bold;
+				font-size: 16px;
 			}
 		}
 		

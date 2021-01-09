@@ -18,4 +18,8 @@ export default {
 
 <style>
  @import url("./assets/css/reset.css");
+ .ivu-btn-success.ivu-btn{
+	 background-color: #5DE8EE !important;
+	 border-color: #5DE8EE !important;
+ }
 </style>

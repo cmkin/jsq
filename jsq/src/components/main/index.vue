@@ -2,6 +2,10 @@
 	<div class="components_main">
 		
 		<div class="left">
+			<div class="logo">
+				<img src="../../assets/img/logo.jpg" alt="">
+				<span>人民法院</span>
+			</div>
 			<Menu ref="menu" @on-select="mSelect" :active-name="activeName">
 				<MenuItem :to="item.link"  :name="index" v-for="item,index in MenuList">
 					<Icon :type="item.icon" />
@@ -64,7 +68,7 @@ export default {
 					text:'违约金计算器'
 				},
 				{
-					link:'',
+					link:'/double',
 					icon:'ios-paper',
 					text:'加倍延迟履行金'
 				}
@@ -108,6 +112,24 @@ export default {
 			height: 100vh;
 			z-index: 1000;
 			background-color: @default-color;
+			.logo{
+				padding: 10px;
+				padding-left: 15%;
+				padding-top: 20px;
+				box-sizing: border-box;
+				img{
+					width: 32px;
+					height: 32px;
+					display: inline-block;
+					margin-right: 10px;
+					position: relative;
+					top: 5px;
+				}
+				span{
+					color: #fff;
+					font-size: 24px;
+				}
+			}
 		}
 		.right{
 			width: 100%;
