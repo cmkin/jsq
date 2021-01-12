@@ -3,7 +3,7 @@
 		
 		<div class="left">
 			<div class="logo">
-				<img src="../../assets/img/logo.jpg" alt="">
+				<img src="../../assets/img/logo.png" alt="">
 				<span>人民法院</span>
 			</div>
 			<Menu ref="menu" @on-select="mSelect" :active-name="activeName">

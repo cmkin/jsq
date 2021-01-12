@@ -1,12 +1,13 @@
 <template>
 	<div class="view_index_index">
 		<div class="header">
-			<img src="../../assets/img/logo.jpg" alt="">
+			<img src="../../assets/img/logo.png" alt="">
 			<span>人民法院</span>
 			<span>法官系统</span>
 			
 			<div class="r">
-				<Input search style="width: 300px;" />
+				<span>搜索</span>
+				<Input style="width: 300px;" />
 			</div>
 		</div>
 		
@@ -143,7 +144,7 @@
 <style lang="less" scoped="scoped">
 	.view_index_index{
 		width: 100%;
-		height: 100vh;
+		height: 100%;
 		background: url(../../assets/img/bg.png);
 		//background: @default-color;/* ie9 */
 		box-shadow: 0px 2px 46px 0px rgba(13, 17, 61, 0.38), 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
@@ -175,7 +176,23 @@
 			}
 			.r{
 				float: right;
-				
+				position: relative;
+				&>span{
+					position: absolute;
+					right: 10px;
+					top: 50%;
+					cursor: pointer;
+					transform: translateY(-55%);
+					&::after{
+						content: '';
+						width: 1px;
+						height: 70%;
+						position: absolute;
+						left: -5px;
+						top: 20%;
+						background-color: #fff;
+					}
+				}
 			}
 		}
 		
@@ -265,7 +282,7 @@
 					margin-right: 40px;
 					img{
 						display: block;
-						width: 90px;
+						width: 100px;
 					}
 					img:nth-child(2){
 						display: none;
@@ -280,7 +297,7 @@
 						}
 						img:nth-child(2){
 							display: block;
-							transform: scale(1.6);
+							//transform: scale(1.6);
 						} 
 					}
 				}
@@ -308,6 +325,7 @@
 						background: none;
 						border-color: #fff;
 						border-radius: 20px;
+						padding-right: 50px;
 					}
 					i{
 						color: #fff;
