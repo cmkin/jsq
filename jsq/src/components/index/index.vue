@@ -144,7 +144,7 @@
 <style lang="less" scoped="scoped">
 	.view_index_index{
 		width: 100%;
-		height: 100%;
+		height: 100vh;
 		background: url(../../assets/img/bg.png);
 		//background: @default-color;/* ie9 */
 		box-shadow: 0px 2px 46px 0px rgba(13, 17, 61, 0.38), 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
